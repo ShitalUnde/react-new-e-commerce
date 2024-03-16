@@ -32,10 +32,6 @@ export default function Products() {
 
   const calculateFinalAmt = ({ price, discount }) => {
      return (price - discount).toFixed(2);
-    // const number = price - discount;
-    // const roundedNumber = number.toFixed(2);
-    // console.log(roundedNumber)
-    // return roundedNumber;
   };
 
   return (
