@@ -29,7 +29,7 @@ function Product({ product, parentIndex }) {
         </Card.Subtitle>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>
+        <ListGroup.Item style={{lineHeight: '0.5'}}>
           {product.discountPercentage > 0 ? (
             <>
               <p>
@@ -51,7 +51,7 @@ function Product({ product, parentIndex }) {
           )}
         </ListGroup.Item>
 
-        <ListGroup.Item>
+        <ListGroup.Item style={{lineHeight: '0.5'}}>
           <p
             className={`${
               product.stock > 0 ? "text-success" : "text-danger"
@@ -61,7 +61,7 @@ function Product({ product, parentIndex }) {
           </p>
           <MyDropdown
             product={product}
-            value={product.qty}
+            parentIndex={parentIndex}
             data={getQtyArr()}
           />
         </ListGroup.Item>

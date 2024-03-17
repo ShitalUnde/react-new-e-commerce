@@ -1,38 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { ProductsContext } from "../Context/ProductsContext";
 import Product from "./Product";
 import { Row, Col } from "react-bootstrap";
 
 export default function Products() {
-  const [products, setProducts] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await fetch("https://dummyjson.com/products");
-        const jsonData = await resp.json();
-        jsonData.products.forEach(async (element) => {
-          element.qty = 1;
-          element.discount = await calculateDiscount(element);
-          element.finalAmt = await calculateFinalAmt(element);
-        });
-        await setProducts([...jsonData.products]);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const calculateDiscount = async ({ price, discountPercentage }) => {
-    const mrp = price;
-    const disPercentage = discountPercentage;
-    return (mrp * (disPercentage / 100)).toFixed(2);
-  };
-
-  const calculateFinalAmt = ({ price, discount }) => {
-     return (price - discount).toFixed(2);
-  };
+  const {products} = useContext(ProductsContext);
 
   return (
     <Row xs={1} md={2} lg={3} xl={4} className="g-4">

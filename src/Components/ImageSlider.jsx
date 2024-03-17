@@ -2,7 +2,7 @@ import Carousel from "react-bootstrap/Carousel";
 import PropTypes from "prop-types";
 
 function ImageSlider({ images = [] }) {
-  const imageHeight = 200;
+  const imageHeight = 150;
   return images.length > 0 ? (
     <Carousel slide={false} interval={null} data-bs-theme="dark">
       {images.map((imageSrc, index) => (
